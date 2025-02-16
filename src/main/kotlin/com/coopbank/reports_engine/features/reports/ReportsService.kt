@@ -50,11 +50,8 @@ class ReportsService {
             val logo: InputStream = rLoader!!.getResource("classpath:/reports/coop.png")!!.inputStream
             parameters["logo"] = logo
 
-
-            //JasperReport compileReport = JasperCompileManager
-            //        .compileReport(new FileInputStream("src/main/resources/templates/CoopTillStatement.jrxml"));
             val compileReport = JasperCompileManager
-                .compileReport(rLoader!!.getResource("classpath:/reports/invoice.jrxml").inputStream)
+                .compileReport(rLoader.getResource("classpath:/reports/invoice.jrxml").inputStream)
 
             val jasperPrint: JasperPrint = JasperFillManager.fillReport(compileReport, parameters, beanCollectionDataSource)
 
